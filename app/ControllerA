@@ -1,0 +1,13 @@
+var Alumno = require('./modelo/Alumno');
+
+// Obtiene todos los objetos Alumno de la base de datos
+exports.getAlumno = function (req, res){
+	Alumno.find(
+		function(err, persona) {
+			if (err)
+			res.send(err)
+			res.json(persona); // devuelve todas las Personas en JSON
+				}
+			);
+}
+
