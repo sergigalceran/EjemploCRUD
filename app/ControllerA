@@ -1,13 +1,71 @@
-var Alumno = require('./modelo/Alumno');
+var Persona = require('./modelo/alumno');
 
 // Obtiene todos los objetos Alumno de la base de datos
-exports.getAlumno = function (req, res){
-	Alumno.find(
+exports.getAlumno2 = function (req, res){
+	Persona.find({_id : req.params.alumno_id},
 		function(err, persona) {
 			if (err)
 			res.send(err)
 			res.json(persona); // devuelve todas las Personas en JSON
 				}
 			);
+}
+exports.getAlumno = function (req, res){
+	Persona.find(
+		function(err, persona) {
+			if (err)
+			res.send(err)
+			res.json(persona); // devuelve todas las Personas en JSON
+				}
+			);
+}
+
+exports.setAlumno = function(req, res) {
+
+		// Creo el objeto Alumno
+		Persona.create(
+			{nombre : req.body.nombre,	direccion: req.body.direccion, telefono: {fijo: req.body.fijo, movil: req.body.movil}},
+			function(err, alumno) {
+				if (err)
+					res.send(err);
+
+				// Obtine y devuelve todas las personas tras crear una de ellas
+				Persona.find(function(err, alumno) {
+				 	if (err)
+				 		res.send(err)
+				 	res.json(alumno);
+				});
+			});
+
+	}
+
+	exports.updateAlumno = function(req, res){
+	Persona.update( {_id : req.params.alumno_id},
+					{$set:{nombre : req.body.nombre, direccion: req.body.direccion, telefono: {fijo: req.body.fijo, movil: req.body.movil}}},
+					function(err, alumno) {
+						if (err)
+							res.send(err);
+
+				// Obtine y devuelve todas las personas tras crear una de ellas
+				Persona.find(function(err, alumno) {
+				 	if (err)
+				 		res.send(err)
+				 	res.json(alumno);
+				});
+			});
+	}
+
+	exports.removeAlumno = function(req, res) {
+	Persona.remove({_id : req.params.alumno_id}, function(err, alumno) {
+		if (err)
+			res.send(err);
+
+			// Obtine y devuelve todas los alumnos tras borrar uno
+			Persona.find(function(err, alumno) {
+				if (err)
+					res.send(err)
+				res.json();
+			});
+		});
 }
 

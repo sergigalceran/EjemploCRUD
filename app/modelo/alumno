@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 module.exports = mongoose.model('Alumno',{
     nombre: String,
     direccion: String,
-    telefonos: {
+    telefono: {
         fijo:Number,
         movil:Number
-    }
+            }   
 });

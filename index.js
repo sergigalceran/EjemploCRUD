@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
 });
 
 // Cargamos los endpoints
-require('./app/routes.js')(app);
+require('./app/routes')(app);
 
 mongoose.connect('mongodb://localhost:27017/minimo',(err, res) =>{
 	if (err) {
