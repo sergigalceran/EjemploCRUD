@@ -1,6 +1,6 @@
 var API = "http://localhost:3001";
 
-var MainApp= angular.module('MainApp', []);
+var MainApp= angular.module('MainApp');
 
 MainApp.controller('coreA', function($scope, $http) {
 	$scope.newPersona = {};

@@ -1,4 +1,5 @@
 var Asignatura = require('./modelo/asignatura');
+var Persona = require('./modelo/alumno');
 
 exports.getSubjects = function (req, res){
 	Asignatura.find(
@@ -27,3 +28,26 @@ exports.setSubject = function(req, res) {
 			});
 
 	}
+
+	exports.updateSubject = function(req, res){
+		Persona.find({_id : req.params.alumno_id},
+		function(err, persona) {
+			if (persona!= false)
+			res.send("El alumno no existe")
+			else
+	Asignatura.update( {_id : req.params.subject_id},
+					{$set:{nombre : req.body.nombre, alumnos: req.body.alumnos}},
+					function(err, subject) {
+						if (err)
+							res.send(err);
+
+				// Obtine y devuelve todas las personas tras crear una de ellas
+				Asignatura.find(function(err, subject) {
+				 	if (err)
+				 		res.send(err)
+				 	res.json(subject);
+				});
+			});
+		});
+	} 
+	

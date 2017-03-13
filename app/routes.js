@@ -19,6 +19,7 @@ module.exports = function(app) {
 	// Asignaturas -------------------------------------------------------------
 	app.get('/api/subjects', Controller2.getSubjects);
 	app.post('/api/subject', Controller2.setSubject);
+	app.put('/api/subject/:subject_id', Controller2.updateSubject);
 	// application -------------------------------------------------------------
 	app.get('*', function(req, res) {
 		res.sendfile('./angular/index.html'); // Carga única de la vista

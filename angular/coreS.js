@@ -1,6 +1,6 @@
 var API = "http://localhost:3001";
 
-var MainApp= angular.module('MainApp', []);
+var MainApp= angular.module('MainApp');
 
 MainApp.controller('coreS', function($scope, $http) {
 	$scope.newSubject = {};
@@ -24,7 +24,7 @@ MainApp.controller('coreS', function($scope, $http) {
             });
         };
 
-        $scope.modificarAsignatura = function(newPersona) {
+        $scope.modificarAsignatura = function(newSubject) {
             $http.put(API + '/api/subject/' + $scope.newSubject._id, $scope.newSubject)
             .then(function(response) {
                 $scope.newSubject = {}; // Borramos los datos del formulario
@@ -34,5 +34,11 @@ MainApp.controller('coreS', function($scope, $http) {
                 console.log('Error: ' + error.data);
             });
         };
+        
+        $scope.selectSubject = function(asignatura) {
+		$scope.newSubject = asignatura;
+		$scope.selected = true;
+		console.log($scope.newSubject, $scope.selected);
+	};
 
 });
