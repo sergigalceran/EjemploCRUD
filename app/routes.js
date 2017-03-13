@@ -1,4 +1,5 @@
 var persona = require('./modelo/alumno');
+var persona = require('./modelo/asignatura');
 var Controller = require ('./controllerA');
 var Controller2 = require ('./controllerS');
 

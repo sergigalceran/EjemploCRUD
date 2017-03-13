@@ -2,7 +2,7 @@ var API = "http://localhost:3001";
 
 var MainApp= angular.module('MainApp', []);
 
-MainApp.controller('coreA', function($scope, $http) {
+MainApp.controller('coreS', function($scope, $http) {
 	$scope.newSubject = {};
 	$scope.asignaturas = {};
 	$scope.selected = false;
