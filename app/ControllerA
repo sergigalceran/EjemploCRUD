@@ -24,7 +24,7 @@ exports.setAlumno = function(req, res) {
 
 		// Creo el objeto Alumno
 		Persona.create(
-			{nombre : req.body.nombre,	direccion: req.body.direccion, telefono: {fijo: req.body.fijo, movil: req.body.movil}},
+			{nombre : req.body.nombre,	direccion: req.body.direccion, telefono: {fijo: req.body.telefono.fijo, movil: req.body.telefono.movil}},
 			function(err, alumno) {
 				if (err)
 					res.send(err);
@@ -41,7 +41,7 @@ exports.setAlumno = function(req, res) {
 
 	exports.updateAlumno = function(req, res){
 	Persona.update( {_id : req.params.alumno_id},
-					{$set:{nombre : req.body.nombre, direccion: req.body.direccion, telefono: {fijo: req.body.fijo, movil: req.body.movil}}},
+					{$set:{nombre : req.body.nombre, direccion: req.body.direccion, telefono: {fijo: req.body.telefono.fijo, movil: req.body.telefono.movil}}},
 					function(err, alumno) {
 						if (err)
 							res.send(err);
@@ -64,7 +64,7 @@ exports.setAlumno = function(req, res) {
 			Persona.find(function(err, alumno) {
 				if (err)
 					res.send(err)
-				res.json();
+				res.json(alumno);
 			});
 		});
 }

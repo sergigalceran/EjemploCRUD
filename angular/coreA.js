@@ -2,7 +2,7 @@ var API = "http://localhost:3001";
 
 var MainApp= angular.module('MainApp', []);
 
-MainApp.controller('core', function($scope, $http) {
+MainApp.controller('coreA', function($scope, $http) {
 	$scope.newPersona = {};
 	$scope.personas = {};
 	$scope.selected = false;
@@ -41,7 +41,7 @@ MainApp.controller('core', function($scope, $http) {
 
 	// Función que borra un objeto persona conocido su id
         $scope.borrarPersona = function(newPersona) {
-            $http.delete(API + '/api/persona/' + $scope.newPersona._id)
+            $http.delete(API + '/api/alumno/' + $scope.newPersona._id)
             .then(function(response) {
                 $scope.newPersona = {};
                 $scope.personas = response.data;

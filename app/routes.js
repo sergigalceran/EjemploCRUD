@@ -1,9 +1,11 @@
 var persona = require('./modelo/alumno');
 var Controller = require ('./controllerA');
+var Controller2 = require ('./controllerS');
 
 
 module.exports = function(app) {
 
+// Alumnos -------------------------------------------------------------
 	// devolver todos los Alumnos
 	app.get('/api/alumnos', Controller.getAlumno);
 	app.get('/api/alumno/:alumno_id', Controller.getAlumno2);
@@ -13,7 +15,9 @@ module.exports = function(app) {
 	app.put('/api/alumno/:alumno_id', Controller.updateAlumno);
 	// Borrar un Alumno
 	app.delete('/api/alumno/:alumno_id', Controller.removeAlumno);
-
+	// Asignaturas -------------------------------------------------------------
+	app.get('/api/subjects', Controller2.getSubjects);
+	app.post('/api/subject', Controller2.setSubject);
 	// application -------------------------------------------------------------
 	app.get('*', function(req, res) {
 		res.sendfile('./angular/index.html'); // Carga única de la vista

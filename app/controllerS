@@ -1,0 +1,29 @@
+var Asignatura = require('./modelo/asignatura');
+
+exports.getSubjects = function (req, res){
+	Asignatura.find(
+		function(err, asignatura) {
+			if (err)
+			res.send(err)
+			res.json(asignatura); // devuelve todas las asignaturas en JSON
+				}
+			);
+}
+exports.setSubject = function(req, res) {
+
+		// Creo el objeto Subject
+		Asignatura.create(
+			{nombre : req.body.nombre, alumnos: req.body.alumnos, fecha: req.body.fecha},
+			function(err, asignatura) {
+				if (err)
+					res.send(err);
+
+				// Obtiene y devuelve todas las asignaturas tras crear una de ellas
+				Asignatura.find(function(err, asignatura) {
+				 	if (err)
+				 		res.send(err)
+				 	res.json(asignatura);
+				});
+			});
+
+	}

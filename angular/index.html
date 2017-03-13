@@ -35,20 +35,23 @@
 					<div class="form-group">
 						<input type="text" class="form-control input-lg text-center" placeholder="Nombre" ng-model="newPersona.nombre" required>
 						<br>
-						<input type="text" class="form-control input-lg text-center" placeholder="Apellido" ng-model="newPersona.apellido" required>
+						<input type="text" class="form-control input-lg text-center" placeholder="Direccion" ng-model="newPersona.direccion" required>
 						<br>
-						<input type="text" class="form-control input-lg text-center" placeholder="Edad" ng-model="newPersona.edad" required>
+						<input type="number" class="form-control input-lg text-center" placeholder="Fijo" ng-model="newPersona.telefono.fijo" required>
+						<br>                        
+                        <input type="number" class="form-control input-lg text-center" placeholder="Movil" ng-model="newPersona.telefono.movil" required>
 					</div>
 
 					<!-- Acciones que podemos realizar en el formulario -->
-					<button type="submit" class="btn btn-success btn-lg" ng-click="registrarPersona()" ng-disabled="myForm.$invalid || selected">Registrar</button>
-					<button type="submit" class="btn btn-warning btn-lg" ng-click="modificarPersona(newPersona)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Modificar</button>
-					<button type="submit" class="btn btn-danger btn-lg" ng-click="borrarPersona(newPersona)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Borrar</button>
+					<button type="submit" class="btn btn-success btn-lg" ng-click="registrarPersona()" ng-disabled= "myForm.$invalid" >Registrar</button>
+					<button type="submit" class="btn btn-warning btn-lg" ng-click="modificarPersona(newPersona)" ng-disabled="!newPersona.nombre || !newPersona.direccion || !selected">Modificar</button>
+					<button type="submit" class="btn btn-danger btn-lg" ng-click="borrarPersona(newPersona)" ng-disabled="!newPersona.nombre || !newPersona.direccion || !selected">Borrar</button>
 				</form>
 			</div>
 		</div>
 	</div>
 <script src="/components/angular/angular.js"></script>
-<script type="text/javascript" src="core.js"></script>
+<script type="text/javascript" src="coreA.js"></script>
+<script type="text/javascript" src="coreS.js"></script>
 </body>
 </html>
